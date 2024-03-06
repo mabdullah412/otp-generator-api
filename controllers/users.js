@@ -3,15 +3,14 @@ const { Foo } = require("../models");
 module.exports = {
   create: async (req, res) => {
     try {
-      const { firstName } = req.body;
+      const { firstName, phoneNumber } = req.body;
 
       if (!firstName) {
         return res.status(400).json({ message: "No firstName provided" });
       }
-
-      const createdUser = await Foo.create({
-        firstName,
-      });
+      if (!phoneNumber) {
+        return res.status(400).json({ message: "No phoneNumber provided" });
+      }
 
       return res
         .status(200)
