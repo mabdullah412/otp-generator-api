@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "A basic nodejs structure",
   "scripts": {
-    "start": "NODE_ENV=development nodemon server.js | ./node_modules/.bin/bunyan",
+    "start": "NODE_ENV=development node server.js | ./node_modules/.bin/bunyan",
     "server": "nodemon server.js | ./node_modules/.bin/bunyan",
     "start-server": "./node_modules/pm2/bin/pm2 start server.js",
     "start-test": "./node_modules/pm2/bin/pm2 start server.js --no-daemon --watch --no-autorestart --env test",
@@ -22,7 +22,6 @@
   "dependencies": {
     "auth0": "^2.30.0",
     "bunyan": "^1.8.12",
-    "convict": "^5.2.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.17.1",

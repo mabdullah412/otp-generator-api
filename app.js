@@ -4,8 +4,6 @@ const expressLogger = require("express-bunyan-logger");
 const cors = require("cors");
 const router = require("./routes");
 
-require("./models");
-
 process.on("uncaughtException", (e) => {
   console.log(e);
 });
