@@ -1,86 +1,27 @@
-# Basic-App-Structure
+# OTP Generator API
 
-A template of Node.js Web Server.
+This is a Node based server that provides an `api` which can be used perform the following functions:
 
-## Pre requisites
+| Endpoint                             | Method | Description                                       | Body                       |
+| :----------------------------------- | :----- | :------------------------------------------------ | :------------------------- |
+| `/api/users`                         | GET    | Returns a list of all users in the database       |                            |
+| `/api/users`                         | POST   | Create a user                                     | `firstName`, `phoneNumber` |
+| `.api/:userId`                       | PATCH  | Update a user's name                              | `firstName`                |
+| `.api/:userId`                       | DELETE | Remove a user                                     |                            |
+| `.api/users/generateOTP`             | POST   | Generates and stores a 4 digt OTP in the database | `phoneNumber`              |
+| `/users/:user_id/verifyOTP?otp=1234` | GET    | Verifies the status of the OTP                    |                            |
 
-- Node 14.0
+The `api` can be seen in action at [OTP Generator React App](https://otp-generator-react.vercel.app/).
 
-## Install dependencies
+### Database
 
-```
-npm install or npm i
-```
+The `userController` establishes a connection with a firebase firestore database. The database values can be seen
+by calling the `/api/users` endpoint. The `users` document in the database contain the following fields:
 
-## Start Server
-
-```
-npm start
-```
-
-Or
-
-```
-node server | bunyan #install bunyan globally for good formatting of logs
-```
-
-Or
-
-```
-npm run server (hot reloading)
-```
-
-## Tail Logs
-
-```
-npm run logs
-```
-
-## Stop app
-
-```
-npm run stop
-```
-
-## Lint
-
-```
-> npm run lint
-> npm run prettier
-```
-
-## Config
-
-- For development, define required variables in development.json
-- For production, define required variables as environment variable in remote setup.
-
-## Database
-
-- If using mySQL for the project, use the following command to `install brew install mysql@5.7`
-- You can start mysql services by `brew services start mysql`
-
-## Create Migration
-
-```
-npm run db:migrate:create migration-name
-```
-
-## Run Migration
-
-```
-npm run db:migrate
-```
-
-## Undo Migration
-
-```
-npm run db:migrate:undo
-```
-
-## Contributing
-
-- Every Database Table should have a corresponding Model file in `models` folder
-- We use `Sequelize` as our ORM
-- Use `npx sequelize` to cli for migrations
-- The `controllers` and `routes` folder should exactly mimic each other. All routers in `routes` should have their corresponding `controllers` file/folder
-- All logging should be done using `req.log`. It's a bunyan logger. For model level logging, `req.log` should be passed to underlying layers
+| Field                 | Datatype  |
+| :-------------------- | :-------- |
+| `id`                  | string    |
+| `firstName`           | string    |
+| `phoneNumber`         | string    |
+| `otp`                 | number    |
+| `otp_expiration_date` | timestamp |

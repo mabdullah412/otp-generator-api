@@ -42,7 +42,7 @@ app.use(cors()); // will configure later
 app.use("/api", router);
 
 // catch 404 later
-// app.use((req, res, next) => next("Not Found"));
+app.use((req, res, next) => res.send("Error 404. Route does not exist"));
 
 // error handling
 app.use((err, req, res, next) => {
