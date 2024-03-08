@@ -11,7 +11,7 @@ This is a Node based server that provides an `api` which can be used perform the
 | `.api/users/generateOTP`             | POST   | Generates and stores a 4 digt OTP in the database | `phoneNumber`              |
 | `/users/:user_id/verifyOTP?otp=1234` | GET    | Verifies the status of the OTP                    |                            |
 
-The `api` can be seen in action at [OTP Generator React App](https://otp-generator-react.vercel.app/).
+The `api` is live at [OTP Generator API](https://otp-generator-api.vercel.app) and can be interacted with using [OTP Generator React App](https://otp-generator-react.vercel.app/).
 
 ### Database
 
